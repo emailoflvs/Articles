@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Article;
 
 class ArticleSeeder extends Seeder
 {
@@ -11,6 +12,21 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $article = Article::firstOrCreate([
+            'text' => 'Article1'
+        ]);
+
+        $article = Article::firstOrCreate([
+            'text' => 'Article2'
+        ]);
+
+        $article = Article::firstOrCreate([
+            'text' => 'Article3'
+        ]);
+
+        $article = Article::firstOrCreate([
+            'text' => 'Article4'
+        ]);
+
     }
 }
