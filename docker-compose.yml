@@ -1,0 +1,75 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile.dev
+    working_dir: /var/www/
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+    depends_on:
+  #    - db
+      - postgres
+    volumes:
+      - ./:/var/www
+    networks:
+      - lahmi
+
+  postgres:
+    image: postgres:9.5-alpine
+#    container_name: ${PROJECT_NAME}-postgres
+    volumes:
+#      - "./sourcefiles/postgres:/var/lib/postgresql/data"
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    networks:
+      - lahmi
+
+#  db:
+#    image: mysql:5.7
+#    environment:
+#      MYSQL_DATABASE: ${DB_DATABASE}
+#      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+#      MYSQL_PASSWORD: ${DB_PASSWORD}
+#      MYSQL_USER: ${DB_USERNAME}
+#      SERVICE_TAGS: dev
+#      SERVICE_NAME: mysql
+#    volumes:
+#      - dbdata:/var/lib/mysql
+#      - ./docker-compose/mysql/my.cnf:/etc/mysql/my.cnf
+#      - ./docker-compose/mysql/init:/docker-entrypoint-initdb.d
+#    ports:
+#      - 3307:3306
+#    networks:
+#      - lahmi
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    depends_on:
+      #    - db
+      - postgres
+      - app
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - lahmi
+
+networks:
+  lahmi:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+
