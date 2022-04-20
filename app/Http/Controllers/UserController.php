@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article;
+use App\User;
 
 /**
 Controller for work with user's data
@@ -16,7 +18,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('index',
+            ['nickname'=>'nickname',
+            'firstname'=>'firstname',
+            'surname'=>'surname',
+            'avatar'=>'avatar',
+            'phone'=>'phone',
+            'male'=>'',
+            'female'=>'checked',
+            'showPhone'=>'checked'
+            ]
+        );
     }
 
     /**

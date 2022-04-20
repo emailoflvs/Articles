@@ -30,37 +30,41 @@
         <div class='edit-profile'>
             <h2 class="heading">Редактировать профиль</h2>
             <form class='form' id='form' method='POST' enctype='multipart/form-data'>
+                @csrf
                 <ul class="form__list">
                     <li class="form__item">
                         <label class='form__label' for="nickname">Никнейм:</label>
-                        <input class='form__input' id='nickname' type="text">
+                        <input class='form__input' id='nickname' type="text" value="{{ $nickname }}">
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="name">Имя:</label>
-                        <input class='form__input' id='name' type="text">
+                        <input class='form__input' id='name' type="text" value="{{ $firstname }}">
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="surname">Фамилия:</label>
-                        <input class='form__input' id='surname' type="text">
+                        <input class='form__input' id='surname' type="text" value="{{ $surname }}">
                     </li>
                     <li class="form__item">
                         <label class='form__inline-label' for="avatar">Аватар:</label>
-                        <input class='form__inline-input' id='avatar' type="file" value='image/jpeg,image/png'>
+                        <input class='form__inline-input' id='avatar' type="file"
+{{--                               value='image/jpeg,image/png'--}}
+                                    value="images/{{ $avatar }}"
+                        >
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="phone">Телефон:</label>
-                        <input class='form__input' id='phone' type="text">
+                        <input class='form__input' id='phone' type="text" value="{{ $phone }}">
                     </li>
                     <li class="form__item">
                         <div class="form__title">Пол:</div>
                         <label class='form__inline-label' for="male">Мужской</label>
-                        <input class='form__inline-input' name='sex' id='male' type="radio">
+                        <input class='form__inline-input' name='sex' id='male' type="radio" {{$male}}>
                         <label class='form__inline-label' for="female">Женский</label>
-                        <input class='form__inline-input' name='sex' id='female' type="radio">
+                        <input class='form__inline-input' name='sex' id='female' type="radio" {{$female}}>
                     </li>
                     <li class="form__item">
                         <label class='form__inline-label' for="showPhone">Я согласен получать email-рассылку</label>
-                        <input class='form__inline-input' id='showPhone' type="checkbox">
+                        <input class='form__inline-input' id='showPhone' type="checkbox"  {{$showPhone}}>
                     </li>
                     <li class="form__item">
                         <button class='form__button' type="submit">Отправить</button>
