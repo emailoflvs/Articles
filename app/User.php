@@ -65,7 +65,7 @@ class User extends Authenticatable
         $user = User::firstOrCreate(
             ['email' => $email],
             [
-                'name' => '',
+                'name' => $request->firstname,
                 'password' => '',
                 'firstname' => $request->firstname,
                 'surname' => $request->surname,
@@ -78,5 +78,20 @@ class User extends Authenticatable
 
         return $user;
     }
+
+
+    /**
+     * Get User by id
+     *
+     * @var string
+     */
+    public static function getUserById(int $user_id)
+    {
+
+        $user = Article::find($user_id);
+        return is_object($user) ? $user->name : "";
+
+    }
+
 
 }
