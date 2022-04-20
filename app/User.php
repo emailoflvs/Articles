@@ -18,7 +18,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
+        'nickname', 'firstname', 'surname', 'avatar', 'phone', 'sex', 'showPhone', 'experience'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -48,4 +50,28 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Article::class);
     }
+
+    /**
+     * Create new user
+     *
+     * @var object
+     */
+    public function createUser(Reaqest $request)
+    {
+
+        $user = User::firstOrCreate(
+            ['email' => $request->email],
+            [
+                'firstname' => $request->firstname,
+                'surname' => $request->surname,
+                'nickname' => $request->nickname,
+                'avatar' => $request->avatar,
+                'phone' => $request->phone,
+                'sex' => $request->sex,
+                'showPhone' => $request->showPhone
+            ]);
+
+        return $user;
+    }
+
 }
