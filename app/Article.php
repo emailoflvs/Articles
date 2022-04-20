@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -14,9 +16,19 @@ class Article extends Model
     use SoftDeletes;
 
     /**
-     * Атрибуты, которые должны быть преобразованы в дату
+     * Attributes to be converted to a date for soft delete
+      * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
+     * Articles witch user took
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }

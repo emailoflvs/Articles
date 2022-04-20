@@ -39,8 +39,13 @@ class User extends Authenticatable
     ];
 
 
-    public static function getArticlesByUser($user_id)
+    /**
+     * Articles witch user took
+     *
+     * @var array
+     */
+    public function articles()
     {
-        return DB::table('article_user')->where('user_id',$user_id)->get();
+        return $this->belongsToMany(Article::class);
     }
 }
