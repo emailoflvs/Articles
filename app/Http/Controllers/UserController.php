@@ -30,10 +30,11 @@ class UserController extends Controller
     {
 
         $userToArticles = User::getLibraryUserToArticles();
-
+        $articlesToUsers = Article::getLibraryArticlesToUsers();
 
         return view('index',[
-            'userToArticles' => $userToArticles
+            'userToArticles' => $userToArticles,
+            'articlesToUsers' => $articlesToUsers
         ]);
     }
 
