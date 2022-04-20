@@ -57,14 +57,14 @@ class Article extends Model
         foreach (Article::all() as $article) {
 
             $lib['id'] = $article['id'];
-            $lib['text'] = Article::getArticleNameById($article['id']);
+            $lib['articles'] = Article::getArticleNameById($article['id']);
 
             $readers = [];
             $reader = Article::find($article['id']);
             foreach ($reader->users as $user) {
                 $readers[] = $user['name'];
             }
-            $lib['name'][] = $readers;
+            $lib['name'] = $readers;
 
             $articleToUsers[] = $lib;
         }

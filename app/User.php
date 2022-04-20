@@ -112,7 +112,7 @@ class User extends Authenticatable
             foreach ($reader->articles as $article) {
                 $stories[] = $article['text'];
             }
-            $lib['text'][] = $stories;
+            $lib['articles'] = $stories;
 
             $userToArticles[] = $lib;
         }
