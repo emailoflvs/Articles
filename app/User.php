@@ -116,6 +116,7 @@ class User extends Authenticatable
 
             $userToArticles[] = $lib;
         }
+        return $userToArticles;
     }
 
 
