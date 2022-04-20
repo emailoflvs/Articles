@@ -7,8 +7,8 @@ use App\Article;
 use App\User;
 
 /**
-Controller for work with user's data
-**/
+ * Controller for work with user's data
+ **/
 class UserController extends Controller
 {
     /**
@@ -28,18 +28,56 @@ class UserController extends Controller
      */
     public function create()
     {
+
+//        $data = [];
+//        $number = 0;
+//        foreach (User::all() as $user) {
+//            $number++;
+////            echo $user['name'];
+//            $data[$number]['name'] = $user['name'];
+//
+//            $reader = User::find($user['id']);
+//
+//            foreach ($reader->articles as $article) {
+//                $text = $article['text'];
+//                $data[] = $data[$number]['name'][1];
+////                echo $article['text'];
+////                $data[]=
+////                var_dump($data);
+//
+////                $data[$number]['name']['text'] = $article['text'];
+////                echo $article['text'];
+//            }
+//                var_dump($data);
+//
+//            exit;
+//        }
+//
+//        $data =  [];
+
+        foreach (User::all() as $user) {
+
+            echo "<br>".$user['name']."<br>";
+
+            $reader = User::find($user['id']);
+            foreach ($reader->articles as $article) {
+                echo $article['text'];
+            }
+
+        }
+
         return view('index');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        USER::createUser($request);
+        User::createUser($request);
 
         return back()->withInput()->with('readonly', 'readonly');
 
@@ -48,7 +86,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +97,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +108,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +120,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
