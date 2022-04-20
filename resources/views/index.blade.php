@@ -34,15 +34,15 @@
                 <ul class="form__list">
                     <li class="form__item">
                         <label class='form__label' for="nickname">Никнейм:</label>
-                        <input class='form__input' id='nickname' type="text" value="{{ $nickname ?? '' }}" {{ $readonly ?? '' }}>
+                        <input class='form__input' id='nickname' name='nickname' type="text" value="{{ $nickname ?? '' }}" {{ $readonly ?? '' }}>
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="name">Имя:</label>
-                        <input class='form__input' id='name' type="text" value="{{ $firstname ?? '' }}" {{ $readonly ?? '' }}>
+                        <input class='form__input' id='name' name='firstname' type="text" value="{{ $firstname ?? '' }}" {{ $readonly ?? '' }}>
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="surname">Фамилия:</label>
-                        <input class='form__input' id='surname' type="text" value="{{ $surname ?? '' }}" {{ $readonly ?? '' }}>
+                        <input class='form__input' id='surname' name='surname' type="text" value="{{ $surname ?? '' }}" {{ $readonly ?? '' }}>
                     </li>
                     <li class="form__item">
                         <label class='form__inline-label' for="avatar">Аватар:</label>
@@ -53,7 +53,7 @@
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="phone">Телефон:</label>
-                        <input class='form__input' id='phone' type="text" value="{{ $phone ?? '' }}" {{ $readonly ?? '' }}>
+                        <input class='form__input' id='phone' name='phone' type="text" value="{{ $phone ?? '' }}" {{ $readonly ?? '' }}>
                     </li>
                     <li class="form__item">
                         <div class="form__title">Пол:</div>
@@ -64,7 +64,7 @@
                     </li>
                     <li class="form__item">
                         <label class='form__inline-label' for="showPhone">Я согласен получать email-рассылку</label>
-                        <input class='form__inline-input' id='showPhone' type="checkbox"  {{$showPhone ?? ''}} {{ $readonly ?? '' }}>
+                        <input class='form__inline-input' id='showPhone' name="showPhone" type="checkbox"  {{$showPhone ?? ''}} {{ $readonly ?? '' }}>
                     </li>
                     <li class="form__item">
                         <button class='form__button' type="submit">Отправить</button>
