@@ -12,25 +12,29 @@ class ArticleUserSeeder extends Seeder
      */
     public function run()
     {
-        $ArticleUser = ArticleUser::firstOrCreate([
+        DB::table('article_user')->insertOrIgnore([
+            'user_id' => '1',
+            'article_id' => '1'
+        ]);
+        DB::table('article_user')->insertOrIgnore([
             'user_id' => '1',
             'article_id' => '1'
         ]);
 
-        $ArticleUser = ArticleUser::firstOrCreate([
+        DB::table('article_user')->insertOrIgnore([
             'user_id' => '1',
             'article_id' => '2'
         ]);
 
-        $ArticleUser = ArticleUser::firstOrCreate([
+        DB::table('article_user')->insertOrIgnore([
             'user_id' => '2',
             'article_id' => '2'
         ]);
-        $ArticleUser = ArticleUser::firstOrCreate([
+        DB::table('article_user')->insertOrIgnore([
             'user_id' => '2',
             'article_id' => '3'
         ]);
-        $ArticleUser = ArticleUser::firstOrCreate([
+        DB::table('article_user')->insertOrIgnore([
             'user_id' => '2',
             'article_id' => '1'
         ]);

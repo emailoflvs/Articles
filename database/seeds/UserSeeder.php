@@ -14,22 +14,26 @@ class UserSeeder extends Seeder
     {
         $user = User::firstOrCreate([
             'name' => 'User2',
-            'email' => 'User2@User2.com'
+            'email' => 'User2@User2.com',
+            'password' => ''
         ]);
 
         $user = User::firstOrCreate([
             'name' => 'User3',
-            'email' => 'User3@User2.com'
+            'email' => 'User3@User2.com',
+            'password' => ''
         ]);
 
         $user = User::firstOrCreate([
             'name' => 'User4',
-            'email' => 'User4@User2.com'
+            'email' => 'User4@User2.com',
+            'password' => ''
         ]);
 
         $user = User::firstOrCreate([
             'name' => 'User5',
-            'email' => 'User5@User2.com'
+            'email' => 'User5@User2.com',
+            'password' => ''
         ]);
 
     }
