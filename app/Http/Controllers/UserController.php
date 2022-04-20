@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         USER::createUser($request);
 
-        return back()->withInput()->with('readonly', 'readonly');;
+        return back()->withInput()->with('readonly', 'readonly');
 
     }
 

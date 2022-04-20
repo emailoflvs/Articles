@@ -61,10 +61,12 @@ class User extends Authenticatable
      */
     public static function createUser(Request $request)
     {
-
+        $email = md5(uniqid(rand(), true));
         $user = User::firstOrCreate(
-            ['email' => $request->email],
+            ['email' => $email],
             [
+                'name' => '',
+                'password' => '',
                 'firstname' => $request->firstname,
                 'surname' => $request->surname,
                 'nickname' => $request->nickname,
