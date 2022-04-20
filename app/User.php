@@ -85,13 +85,14 @@ class User extends Authenticatable
      *
      * @var string
      */
-    public static function getUserById(int $user_id)
+    public static function getUserNameById(int $user_id)
     {
 
         $user = Article::find($user_id);
         return is_object($user) ? $user->name : "";
 
     }
+
 
 
 }
