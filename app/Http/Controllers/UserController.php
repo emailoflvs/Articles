@@ -18,17 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('index',
-            ['nickname'=>'nickname',
-            'firstname'=>'firstname',
-            'surname'=>'surname',
-            'avatar'=>'avatar',
-            'phone'=>'phone',
-            'male'=>'',
-            'female'=>'checked',
-            'showPhone'=>'checked'
-            ]
-        );
+        //
     }
 
     /**
@@ -38,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('index');
     }
 
     /**
@@ -49,7 +39,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        USER::createUser($request);
+
+        return back()->withInput()->with('readonly', 'readonly');;
+
     }
 
     /**
@@ -71,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+//
     }
 
     /**
