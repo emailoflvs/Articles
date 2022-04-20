@@ -10,7 +10,22 @@
 </head>
 <body>
 <div class="wrapper">
+    @foreach ($userToArticles as $user)
+        <br>{{ $user['username'] }}<BR>
+        @foreach ($user['articles'] as $article)
+            {{ $article }}
+        @endforeach
+    @endforeach
+<hr>
+        @foreach ($articlesToUsers as $article)
+            <br>{{ $article['articles'] }}<BR>
+            @foreach ($article['name'] as $user)
+                {{ $user }}
+            @endforeach
+        @endforeach
+
     <main class="main-content">
+
         <div class="my-profile">
             <h2 class="heading">Мой профиль</h2>
             <div class="profile">
@@ -28,7 +43,10 @@
             </div>
         </div>
         <div class='edit-profile'>
-            <h2 class="heading">Редактировать профиль</h2>
+            <h2 class="heading">Редактировать профиль
+
+
+                </h2>
             <form class='form' id='form' method ='POST' enctype='multipart/form-data'>
                 @csrf
                 <ul class="form__list">
