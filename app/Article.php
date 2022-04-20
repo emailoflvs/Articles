@@ -17,7 +17,7 @@ class Article extends Model
 
     /**
      * Attributes to be converted to a date for soft delete
-      * @var array
+     * @var array
      */
     protected $dates = ['deleted_at'];
 
@@ -30,5 +30,19 @@ class Article extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    /**
+     * Get Article by id
+     *
+     * @var string
+     */
+    public static function getArticleById(int $article_id)
+    {
+
+        $article = Article::find($article_id);
+        return is_object($article) ? $article->text : "";
+
+    }
+
 
 }
