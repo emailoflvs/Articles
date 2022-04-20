@@ -56,7 +56,7 @@ class User extends Authenticatable
      *
      * @var object
      */
-    public function createUser(Reaqest $request)
+    public static function createUser(Reaqest $request)
     {
 
         $user = User::firstOrCreate(
