@@ -81,18 +81,42 @@ class User extends Authenticatable
 
 
     /**
-     * Get User by id
+     * Get User name by id
      *
      * @var string
      */
     public static function getUserNameById(int $user_id)
     {
 
-        $user = Article::find($user_id);
+        $user = User::find($user_id);
         return is_object($user) ? $user->name : "";
 
     }
 
+    /**
+     * Receive scheme where user show all his articles
+     *
+     * @var array
+     */
+    public static function getLibraryUserToArticles()
+    {
+
+        $userToArticles = [];
+        foreach (User::all() as $user) {
+
+            $lib['id'] = $user['id'];
+            $lib['username'] = User::getUserNameById($user['id']);
+
+            $stories = [];
+            $reader = User::find($user['id']);
+            foreach ($reader->articles as $article) {
+                $stories[] = $article['text'];
+            }
+            $lib['text'][] = $stories;
+
+            $userToArticles[] = $lib;
+        }
+    }
 
 
 }

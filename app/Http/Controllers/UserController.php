@@ -29,44 +29,12 @@ class UserController extends Controller
     public function create()
     {
 
-//        $data = [];
-//        $number = 0;
-//        foreach (User::all() as $user) {
-//            $number++;
-////            echo $user['name'];
-//            $data[$number]['name'] = $user['name'];
-//
-//            $reader = User::find($user['id']);
-//
-//            foreach ($reader->articles as $article) {
-//                $text = $article['text'];
-//                $data[] = $data[$number]['name'][1];
-////                echo $article['text'];
-////                $data[]=
-////                var_dump($data);
-//
-////                $data[$number]['name']['text'] = $article['text'];
-////                echo $article['text'];
-//            }
-//                var_dump($data);
-//
-//            exit;
-//        }
-//
-//        $data =  [];
+        $userToArticles = User::getLibraryUserToArticles();
 
-        foreach (User::all() as $user) {
 
-            echo "<br>".$user['name']."<br>";
-
-            $reader = User::find($user['id']);
-            foreach ($reader->articles as $article) {
-                echo $article['text'];
-            }
-
-        }
-
-        return view('index');
+        return view('index',[
+            'userToArticles' => $userToArticles
+        ]);
     }
 
     /**
