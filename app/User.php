@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Request;
 
 class User extends Authenticatable
 {
@@ -54,9 +55,11 @@ class User extends Authenticatable
     /**
      * Create new user
      *
-     * @var object
+     *
+     * @param Request $request
+     * @return mixed
      */
-    public static function createUser(Reaqest $request)
+    public static function createUser(Request $request)
     {
 
         $user = User::firstOrCreate(
